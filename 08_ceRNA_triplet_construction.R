@@ -139,3 +139,29 @@ ceRNA_triplets <- inner_join(
 ) %>%
   dplyr::select(lncRNA, miRNA, mRNA) %>%
   distinct()
+
+
+cat("Unique lncRNAs: ", length(unique(ceRNA_triplets$lncRNA)), "\n")
+cat("Unique miRNAs:  ", length(unique(ceRNA_triplets$miRNA)), "\n")
+cat("Unique mRNAs:   ", length(unique(ceRNA_triplets$mRNA)), "\n")
+
+unique_lncRNAs <- unique(ceRNA_triplets$lncRNA)
+unique_miRNAs  <- unique(ceRNA_triplets$miRNA)
+unique_mRNAs   <- unique(ceRNA_triplets$mRNA)
+
+# To view them:
+head(unique_lncRNAs)
+head(unique_miRNAs)
+head(unique_mRNAs)
+
+# Save as one-column CSVs
+write.csv(data.frame(lncRNA = unique_lncRNAs), "unique_lncRNAs.csv", row.names = FALSE)
+write.csv(data.frame(miRNA  = unique_miRNAs),  "unique_miRNAs.csv",  row.names = FALSE)
+write.csv(data.frame(mRNA   = unique_mRNAs),   "unique_mRNAs.csv",   row.names = FALSE)
+
+
+
+
+
+
+
